@@ -1,0 +1,38 @@
+O(nlogn) sc O(1)
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        // Code Here
+      int n=arr.length;
+        Arrays.sort(arr);
+        int max=-1;
+        int min=-1;
+        for(int i=0;i<n;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        for(int i=n-1;i>=0;i--){
+            if(arr[i]<max){
+                min=arr[i];
+                break;
+            }
+        }
+        return min;
+tc O(n) sc O(1)
+ public int getSecondLargest(int[] arr) {
+        // Code Here
+      int n=arr.length;
+        // Arrays.sort(arr);
+        int firstlargest=Integer.MIN_VALUE;
+        int secondlargest=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            if(arr[i]>firstlargest){
+                secondlargest=firstlargest;
+                firstlargest=arr[i];
+            }else if(arr[i]>secondlargest && arr[i] < firstlargest){
+                secondlargest=arr[i];
+            }
+        }
+        if(firstlargest==secondlargest || secondlargest== Integer.MIN_VALUE)return -1;
+        
+       return secondlargest;
