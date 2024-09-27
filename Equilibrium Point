@@ -1,0 +1,20 @@
+ public static int equilibriumPoint(long arr[]) {
+        // Your code here
+        int totsum=0;
+        int leftsum=0;
+        for(int i=0;i<arr.length;i++){
+            totsum+=arr[i];
+        }
+        for(int i=0;i<arr.length;i++){
+            totsum-=arr[i];
+            if(leftsum==totsum){
+                return i+1;
+            }
+            leftsum+=arr[i];
+        }
+        return -1;
+    }
+} tc O(n) sc O(1) 
+totsum=0;
+leftsum=0;
+phele total sum nikalo full array ka then in another loop keep minus the current element from totalsum and check if (totsum==leftsum)return i and then leftsum+=arr[i] 
