@@ -11,18 +11,19 @@
                pair.add(arr[r]);
                li.add(pair);
                l++;r--;
-               while(l<r&&arr[l]==arr[l-1]){
+               while(l<r&&arr[l]==arr[l-1]){   // checking duplicates 
                    l++;
                }
-               while(l<r&&arr[r]==arr[r+1]){
+               while(l<r&&arr[r]==arr[r+1]){     // checking duplicates 
                    r--;
                }
            }
-           else if(sum<0){
+           else if(sum<0){  to increase sum
                l++;
-           }else{
+           }else{       to decrese sum
                r--;
            }
        }
        return li;
+
 tc O(nlogn) sc O(1)
