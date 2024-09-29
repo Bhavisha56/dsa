@@ -1,0 +1,8 @@
+tc O(n^2) sc O(1) using 2 loops
+
+
+tc O(n) sc O(N)
+using hashset  in for loop find ans=target-arr[i];
+check if set.contains(ans)reutrn true;
+else set.add(num);
+then return false;
