@@ -1,0 +1,32 @@
+tc O(n) sc O(n)
+ public static void frequencyCount(int arr[], int N, int P) {
+        // do modify in the given array
+        ArrayList<Integer> li=new ArrayList<>();
+        HashMap<Integer,Integer> mp=new HashMap<>();
+        for(int i=0;i<N;i++){                                     
+          if (arr[i] <= P) {  // Only count elements <= P (because N might be greater than P)
+                mp.put(arr[i], mp.getOrDefault(arr[i], 0) + 1);
+            } 
+        }
+        for(int i=1;i<=N;i++){
+            if(mp.containsKey(i)){
+              arr[i-1]=mp.get(i);
+            }else{
+                arr[i-1]=0;
+            }
+        }
+tc O(n) sc O(P)
+ public static void frequencyCount(int arr[], int N, int P) {
+        int p[]=new int[P];
+       for (int i = 0; i < N; i++) {
+         p[arr[i]-1]=p[arr[i]-1]+1;
+            }
+        
+        // Step 2: Traverse the array again to modify it with actual frequencies
+        for (int i = 0; i < N; i++) {
+            if (i < P) {                                                          
+                arr[i] = p[i];  // Get the frequency count
+            } else {
+                arr[i] = 0;  // For elements outside the range, set to 0
+            }
+    }
