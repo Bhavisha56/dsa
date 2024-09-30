@@ -1,0 +1,21 @@
+tc O(n^2) sc O(1)
+using 2loops
+
+tc O(n) sc O(1)
+ ArrayList<Integer> res=new ArrayList<>();
+        int start=0,end=0,sum=0;
+        while(end<n){
+            sum+=arr[end];
+            while(sum>s&&start<end){
+                sum-=arr[start];
+                start++;
+            }
+            if(sum==s){
+                res.add(start+1);
+                res.add(end+1);
+                return res;
+            }
+            end++;
+        }
+        res.add(-1);
+        return res;
