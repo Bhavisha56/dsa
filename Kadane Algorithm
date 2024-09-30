@@ -1,0 +1,35 @@
+int maxSubarraySum(int[] arr) {
+
+        // Your code here
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            int sum=0;
+            for(int j=i;j<arr.length;j++){           tc O(n^2) sc O(1)
+                sum+=arr[j];
+               max=Math.max(sum,max);
+            }
+        }
+        // if(max<0)return -1;
+        return max;
+
+kadane algo
+    int maxSubarraySum(int[] arr) {
+
+        // Your code here
+int max=Integer.MIN_VALUE;
+int sum=0;
+       for(int i=0;i<arr.length;i++){
+        sum+=arr[i];
+           if(summax){
+               max=sum;
+           }
+           if(sum<0){
+               sum=0;
+           }
+       }
+       return max;
+    
+    }
+}
+tc O(n) sc O(1)
+
