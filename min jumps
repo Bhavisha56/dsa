@@ -1,0 +1,16 @@
+      // your code here
+       int jumps=0, curr=0, farthest=0, i=0;
+      while(i<arr.length){
+          if(i>farthest)return -1;
+          farthest=Math.max(farthest,i+arr[i]);
+          if(i==curr){
+              curr=farthest;
+              jumps++;
+              if(curr>=arr.length-1)break;
+          }
+          i++;
+      }
+      return jumps;
+    }
+}
+tc O(N) scO(1)
