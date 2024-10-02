@@ -1,0 +1,35 @@
+static int majorityElement(int arr[]) {
+          int appear=arr.length/2;
+          HashMap<Integer,Integer> mp=new HashMap<>();       finding frequency using hasmap and return most frequent elem;
+          for(int i=0;i<arr.length;i++){
+              mp.put(arr[i],mp.getOrDefault(arr[i],0)+1);
+              if(mp.get(arr[i])>appear){
+                  return arr[i];
+              }
+          }
+          return -1;   tc O(n) sc O(n)  
+
+Booyer votung algo tc O(n) sc O(1)
+first loop selected an elem 
+and in second loop it finds how many times the elem occurs in array
+class Solution {
+    static int majorityElement(int arr[]) {
+        // your code here
+     int elem=0;
+     int cnt1=0;
+     for(int i=0;i<arr.length;i++){                          
+         if(cnt1==0){
+             cnt1++;
+             elem=arr[i];
+         }else if(arr[i]==elem)cnt1++;
+         else cnt1--;
+     }
+     int cnt2=0;
+     for(int i=0;i<arr.length;i++){
+         if(arr[i]==elem){
+             cnt2++;
+         }
+     }
+     if(cnt2>(arr.length/2))return elem;
+     return -1;
+    }
