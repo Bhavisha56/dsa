@@ -1,0 +1,41 @@
+Parenthesis Checker
+Difficulty: EasyAccuracy: 28.56%Submissions: 609K+Points: 2
+Given an expression string x. Examine whether the pairs and the orders of {,},(,),[,] are correct in exp.
+For example, the function should return 'true' for exp = [()]{}{[()()]()} and 'false' for exp = [(]).
+
+Note: The driver code prints "balanced" if function return true, otherwise it prints "not balanced".
+
+Examples :
+
+Input: {([])}
+Output: true
+Explanation: { ( [ ] ) }. Same colored brackets can form balanced pairs, with 0 number of unbalanced bracket.
+
+class Solution
+{
+    Function to check if brackets are balanced or not.
+    static boolean ispar(String x)
+    {
+        // add your code here
+        Stack<Character> st=new Stack<>();
+        for(int i=0;i<x.length();i++){
+            if(x.charAt(i)=='{' || x.charAt(i)=='(' || x.charAt(i)=='['){
+                st.push(x.charAt(i));
+            }else{
+                if(!st.isEmpty()){
+                    if( x.charAt(i) == ']' && st.peek()!='[' ||  x.charAt(i) == '}' && st.peek() != '{'  || x.charAt(i) == ')' && st.peek() !='('){
+                        return false;
+                    }else{
+                        st.pop();
+                    }
+                }else{
+                    return false;
+                }
+            }
+        }
+      if(st.isEmpty()){
+          return true;
+      }
+      return false;
+    }
+}
