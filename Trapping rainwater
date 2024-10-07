@@ -7,3 +7,51 @@ Examples:
 
 Input: arr[] = [3,0,0,2,0,4]
 Output: 10
+
+
+class Solution {
+
+    // arr: input array
+    // n: size of array
+    // Function to find the trapped water between the blocks.
+    static long trappingWater(int arr[]) {
+        // Your code here
+        
+        int n=arr.length;
+      long water=0;
+        int max1=arr[0];
+        int max2=arr[n-1];
+        int leftele[]=new int[n];
+        int rightele[]=new int[n];
+        for(int i=0;i<n;i++){
+            if(max1>=arr[i]){
+                leftele[i]=max1;
+            }
+            else{
+                leftele[i]=arr[i];
+                max1=arr[i];
+            }
+        }
+        for(int i=n-1;i>=0;i--){
+            if(max2>=arr[i]){
+                rightele[i]=max2;
+            }
+            else{
+                rightele[i]=arr[i];
+                max2=arr[i];
+            }
+        }
+        
+        for(int i=0;i<n;i++){
+            if(leftele[i]<=rightele[i]){
+                water+=leftele[i]-arr[i];
+            }else{
+                water+=rightele[i]-arr[i];
+            }
+        }
+        
+        return water;
+        
+        
+        
+    
