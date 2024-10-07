@@ -51,6 +51,7 @@ class Solution {
         }
         
         return water;
+find the max from left and find max from right then find the minimum from both and subtact it from array elemnts and store the water;
         
         
         
