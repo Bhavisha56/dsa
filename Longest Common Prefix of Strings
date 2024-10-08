@@ -1,0 +1,70 @@
+
+Difficulty: EasyAccuracy: 29.52%Submissions: 290K+Points: 2
+Given an array of strings arr. Return the longest common prefix among each and every strings present in the array. If there's no prefix common in all the strings, return "-1".
+
+Examples :
+
+Input: arr[] = ["geeksforgeeks", "geeks", "geek", "geezer"]
+Output: gee
+Explanation: "gee" is the longest common prefix in all the given strings.\
+
+
+
+// User function Template for Java
+
+class Solution {
+    public String longestCommonPrefix(String arr[]) {
+        // code here
+        Arrays.sort(arr);
+        // int cnt=-1;
+        String first=arr[0];
+        String last=arr[arr.length-1];
+        int min=0;
+        if(first.length()<last.length()){
+            min=first.length();
+        }else{
+            min=last.length();
+        }
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<min;i++){
+         char ch=first.charAt(i);
+         char ch2=last.charAt(i);
+           if(ch==ch2){
+               sb.append(ch);
+           }else{
+               break;
+           }
+        }
+        if(sb.length()==0)return "-1";
+        return sb.toString();
+    }
+} tc O(nlogn) sc O(1)
+
+class Solution {
+    public String longestCommonPrefix(String arr[]) {
+        // code here
+        int minlen=Integer.MAX_VALUE;
+        int idx=-1;
+        int n=arr.length;
+        for(int i=0;i<n;i++){
+            if(arr[i].length()<minlen){
+                minlen = arr[i].length();
+                idx=i;
+            }
+        }
+    String ans=arr[idx];
+    for(int i=0;i<n;i++){
+        String temp="";
+        for(int j=0;j<ans.length();j++){
+            if(arr[i].charAt(j)==ans.charAt(j)){
+                temp+=ans.charAt(j);
+            }else{
+                break;
+            }
+        }
+        ans=temp;
+        if(ans.length()==0)return "-1";
+    }
+        return ans;
+}tc O(n*min[arri]) sc  O(min(|arri|))
+
