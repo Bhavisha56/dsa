@@ -1,0 +1,39 @@
+
+Difficulty: MediumAccuracy: 42.69%Submissions: 249K+Points: 4
+You are given two strings str1 and str2. Your task is to find the length of the longest common substring among the given strings.
+
+Examples:
+
+Input: str1 = "ABCDGH", str2 = "ACDGHR"
+Output: 4
+Explanation: The longest common substring is "CDGH" which has length 4.
+
+approach1 
+using 3 while loop tc O(n^3) sc O(1)
+code
+class Solution {
+    public int longestCommonSubstr(String str1, String str2) {
+        // code here
+        int i=0,j=0;
+        int n1=str1.length();
+        int n2=str2.length();
+        int len=0;
+        while(i<n1 ){
+            j=0;
+            while(j<n2){
+                int currlen=0;
+                int starti=i,startj=j;
+                while(starti<n1&&startj<n2 && str1.charAt(starti)==str2.charAt(startj)){
+                    currlen++;
+                    starti++;
+                    startj++;
+                }
+            len=Math.max(len,currlen);
+            j++;
+            }
+            i++;
+        }
+        return len;
+    }
+    
+}
