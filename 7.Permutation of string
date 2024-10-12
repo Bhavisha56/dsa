@@ -1,0 +1,49 @@
+Given a string S. The task is to print all unique permutations of the given string that may contain dulplicates in lexicographically sorted order. 
+
+Example 1:
+
+Input: ABC
+Output:
+ABC ACB BAC BCA CAB CBA
+Explanation:
+Given string ABC has permutations in 6 
+forms as ABC, ACB, BAC, BCA, CAB and CBA .
+
+approach 1 tc O(n*n!) sc O(n)
+class Solution {
+    public void swap(char arr[],int l,int r){
+        char temp=arr[l];
+        arr[l]=arr[r];
+        arr[r]=temp;
+    }
+    
+    public void premute(char arr[],int l,int r,List<String> li){
+        if(l==r){
+            li.add(new String(arr));
+        }else {
+            for (int i = l; i <= r; i++) {
+                swap(arr, l, i); // Swap the current index with the starting index
+                premute(arr, l + 1, r, li); // Recur for the next index
+                swap(arr, l, i); // Backtrack
+            }
+    }
+    }
+    public List<String> find_permutation(String S) {
+        // Code here
+        char arr[]=S.toCharArray();
+        int n=S.length();
+        List<String> li=new ArrayList<>();
+         List<String> ans=new ArrayList<>();
+        premute(arr,0,n-1,li);
+        Collections.sort(li);
+         HashSet<String> set = new HashSet<>(li);
+        
+        // Clear the list and add all unique permutations
+        li.clear();
+        li.addAll(set);
+        
+        // Sort the result list
+        Collections.sort(li);
+        return li;
+    }
+}
