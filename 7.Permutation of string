@@ -9,7 +9,7 @@ Explanation:
 Given string ABC has permutations in 6 
 forms as ABC, ACB, BAC, BCA, CAB and CBA .
 
-approach 1 tc O(n*n!) sc O(n)
+approach 1 tc O(n*n!) sc O(n!)
 class Solution {
     public void swap(char arr[],int l,int r){
         char temp=arr[l];
