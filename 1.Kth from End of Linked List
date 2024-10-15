@@ -1,0 +1,43 @@
+Kth from End of Linked List
+Difficulty: EasyAccuracy: 41.18%Submissions: 395K+Points: 2
+Given the head of a linked list and the number k, Your task is to find the kth node from the end. If k is more than the number of nodes, then the output should be -1.
+
+Examples
+
+Input: LinkedList: 1->2->3->4->5->6->7->8->9, k = 2
+Output: 8
+Explanation: The given linked list is 1->2->3->4->5->6->7->8->9. The 2nd node from end is 8.
+appraoch 1 tc O(n) sc O(1)
+class Solution {
+
+    // Function to find the data of kth node from
+    // the end of a linked list.
+    int getKthFromLast(Node head, int k) {
+        // Your code here
+    Node temp = head;
+    Node prev = null;
+    Node next = null;
+    
+    while (temp != null) {
+        next = temp.next;  
+        temp.next = prev;  
+        prev = temp;       
+        temp = next;       
+    }
+        head = prev;
+    
+    temp = head;
+    int count = 1;
+    
+    while (temp != null) {
+        if (count == k) {
+            return temp.data; 
+        }
+        temp = temp.next;
+        count++;
+    }
+
+    return -1;
+    }
+}
+
