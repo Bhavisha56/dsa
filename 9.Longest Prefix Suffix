@@ -1,0 +1,40 @@
+Longest Prefix Suffix
+Difficulty: HardAccuracy: 27.91%Submissions: 137K+Points: 8
+Given a string of characters, find the length of the longest proper prefix which is also a proper suffix.
+
+NOTE: Prefix and suffix can be overlapping but they should not be equal to the entire string.
+
+Examples :
+
+Input: str = "abab"
+Output: 2
+Explanation: "ab" is the longest proper prefix and suffix. 
+
+
+class Solution {   tcO(n)scO(n)
+      int lps(String str) {
+        // code here
+        int n=str.length();
+        // int len=0;
+        if(n<2)return 0;
+        
+        int i=1;
+        int j=0;
+      int []A=new int[n];
+      while(i<n){
+          if(str.charAt(i)==str.charAt(j)){
+              A[i]=j+1;
+          j++;
+          i++;
+          }else{
+              if(j==0){
+                  i++;
+              }else{
+              j=A[j-1];
+}
+          }
+      }
+      return A[n-1];
+        
+    }
+}
